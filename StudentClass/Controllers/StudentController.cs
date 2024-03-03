@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -64,10 +65,62 @@ namespace StudentClass.Controllers
         public IEnumerable<Student> GetStudentByClass(int id)
         {
             var classes=db.Classes.Find(id);
+            
+            
             var listOfStudents=db.Students.Where(x=>x.ClassIds==id).ToList();
             
             return listOfStudents;
 
+        }
+
+        public List<Student> GetStudentList(Student student)
+        {
+            List<Student> studentList = new List<Student>();
+            try
+            {
+                string searchText = student.Search;
+                Expression<Func<Student, object>> orderBy = x => x.StudentId;
+                if (student.SortBy == "StudentId")
+                {
+                    orderBy = x => x.StudentId;
+
+                }
+                else if(student.SortBy == "FirstName")
+                {
+                    orderBy = x => x.FirstName;
+                }
+                else if (student.SortBy == "LastName")
+                {
+                    orderBy = x => x.LastName;
+                }
+                else if (student.SortBy == "PhoneNumber")
+                {
+                    orderBy = x => x.PhoneNumber;
+                }
+                if (student.SortOrder != null)
+                {
+                    if (student.SortBy.ToLower() == "asc")
+                    {
+                        studentList = db.Students.Where(x => x.FirstName.Contains(searchText != null ? searchText : x.FirstName)).OrderBy(orderBy).Skip((student.PageIndex-1)*student.PageSize).Take(student.PageSize).ToList();
+
+                    }
+                    else if (student.SortBy.ToLower() == "desc")
+                    {
+                        studentList = db.Students.Where(x => x.FirstName.Contains(searchText != null ? searchText : x.FirstName)).OrderByDescending(orderBy).Skip((student.PageIndex - 1) * student.PageSize).Take(student.PageSize).ToList();
+
+                    }
+                }
+                else
+                {
+                    studentList = db.Students.Where(x => x.FirstName.Contains(searchText != null ? searchText : x.FirstName)).OrderByDescending(orderBy).ToList();
+                }
+                
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return studentList;
         }
 
     }

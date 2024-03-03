@@ -11,7 +11,8 @@ namespace StudentClass.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Student
     {
         public int StudentId { get; set; }
@@ -20,5 +21,18 @@ namespace StudentClass.Models
         public Nullable<int> PhoneNumber { get; set; }
         public string EmailId { get; set; }
         public Nullable<int> ClassIds { get; set; }
+        [NotMapped]
+        public string Search { get; set; }
+        [NotMapped]
+        public string SortBy { get; set; }
+
+        [NotMapped]
+
+        public string SortOrder { get; set; }
+        [NotMapped]
+        public int PageIndex { get; set; }
+        [NotMapped]
+        public int PageSize { get; set; }
+
     }
 }
