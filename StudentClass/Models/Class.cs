@@ -11,12 +11,26 @@ namespace StudentClass.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Class
     {
         public int ClassId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public Nullable<int> StudentIds { get; set; }
+
+        [NotMapped]
+        public string Search { get; set; }
+        [NotMapped]
+        public string SortBy { get; set; }
+
+        [NotMapped]
+
+        public string SortOrder { get; set; }
+        [NotMapped]
+        public int PageIndex { get; set; }
+        [NotMapped]
+        public int PageSize { get; set; }
     }
 }
