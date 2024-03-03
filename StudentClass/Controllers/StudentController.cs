@@ -6,11 +6,18 @@ using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Data.SqlClient;
+using System.Data;
+using System.Configuration;
+using System.Data.OleDb;
+using System.Web.Mvc;
 
 namespace StudentClass.Controllers
 {
     public class StudentController : ApiController
     {
+        SqlConnection con=new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
+        OleDbConnection Econ;
         StudentClassEntities db = new StudentClassEntities();
 
         //Adding a student
@@ -122,6 +129,12 @@ namespace StudentClass.Controllers
             }
             return studentList;
         }
+
+        
+
+       
+
+
 
     }
 }
