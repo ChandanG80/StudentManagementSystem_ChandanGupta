@@ -11,12 +11,14 @@ namespace StudentClass.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class Class
     {
         public int ClassId { get; set; }
         public string Name { get; set; }
+        [StringLength(100)]
         public string Description { get; set; }
         public Nullable<int> StudentIds { get; set; }
 
