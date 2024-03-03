@@ -60,5 +60,15 @@ namespace StudentClass.Controllers
             return "Student Deleted successfully";
         }
 
+        
+        public IEnumerable<Student> GetStudentByClass(int id)
+        {
+            var classes=db.Classes.Find(id);
+            var listOfStudents=db.Students.Where(x=>x.ClassIds==id).ToList();
+            
+            return listOfStudents;
+
+        }
+
     }
 }
