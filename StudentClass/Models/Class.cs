@@ -18,7 +18,9 @@ namespace StudentClass.Models
     {
         public int ClassId { get; set; }
         public string Name { get; set; }
+
         [StringLength(100)]
+        
         public string Description { get; set; }
         public Nullable<int> StudentIds { get; set; }
 

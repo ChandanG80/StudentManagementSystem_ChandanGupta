@@ -11,16 +11,20 @@ using System.Data;
 using System.Configuration;
 using System.Data.OleDb;
 using System.Web.Mvc;
+using System.Threading;
 
 namespace StudentClass.Controllers
 {
+    [BasicAuthentication]
     public class StudentController : ApiController
     {
         SqlConnection con=new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
         OleDbConnection Econ;
         StudentClassEntities db = new StudentClassEntities();
+        
 
         //Adding a student
+        
         public string AddStudent(Student student)
         {
             db.Students.Add(student);
@@ -28,9 +32,10 @@ namespace StudentClass.Controllers
             return "Student Added";
         }
 
-
+        
         //Get list of all students
         public IEnumerable<Student> GetStudents()
+           
         {
             return db.Students.ToList();
         }

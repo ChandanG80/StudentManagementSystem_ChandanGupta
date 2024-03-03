@@ -7,6 +7,8 @@
       <Diagram DiagramId="8f2ed756e1bd4025baebf5c867fe5f44" Name="Diagram1">
         <EntityTypeShape EntityType="StudentClassModel.Class" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="StudentClassModel.Student" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentClassModel.user" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="StudentClassModel.Login" Width="1.5" PointX="3.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

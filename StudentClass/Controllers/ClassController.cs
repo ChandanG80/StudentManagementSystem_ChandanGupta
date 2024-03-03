@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace StudentClass.Controllers
 {
+    [BasicAuthentication]
     public class ClassController : ApiController
     {
         StudentClassEntities db = new StudentClassEntities();

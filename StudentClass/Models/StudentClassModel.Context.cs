@@ -27,5 +27,7 @@ namespace StudentClass.Models
     
         public virtual DbSet<Class> Classes { get; set; }
         public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<user> users { get; set; }
+        public virtual DbSet<Login> Logins { get; set; }
     }
 }
